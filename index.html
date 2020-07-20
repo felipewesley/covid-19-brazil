@@ -1,0 +1,107 @@
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> COVID-19 :: Brasil </title>
+    <!-- Icone da aplicação no navegador -->
+    <link rel="shortcut icon" href="./img/covid19_icon.png" type="image/x-icon">
+    <!-- Bootstrap Stylesheet -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <!-- Font Awesome Link Stylesheet -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Device validation -->
+    <script src="./device_validation.js"></script>
+    <!-- jQuery -->
+    <!-- <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script> -->
+    <!-- Folha de estilos da pagina -->
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body onload="setGraphModel()">
+    
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">
+            <img src="./img/covid19_icon.png" width="30" height="30" class="d-inline-block align-top" alt="">
+            <span class="text-danger">CORONA</span>VÍRUS
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Alterna navegação">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#"> Home <span class="sr-only">(Página atual)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./covid19graph.html" id="link_contamincacao"> Contaminação </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#"> Prevenção </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="#"> Novidades </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container container-main">
+        
+        <h1 class="display-3"> COVID-19 no Brasil </h1>
+        <br>
+        <p class="lead">
+            Esta aplicação apresenta dados e gráficos baseados em dados fornecidos por terceiros sobre a taxa de contaminação por Coronavírus em cada região do Brasil, com seus respectivos estados. <br><br>
+            Cada estado apresenta a quantidade de casos confirmados, quantidade de mortes por COVID-19 e quantidade de recuperados. 
+        </p>
+        <hr class="my-4 rule-4">
+        <h3 class="display-5"> De onde vêm os dados? <i class="fa fa-check-circle verified"></i> </h3> 
+        <p class="lead">
+            Os dados utilizados nesta aplicação são recebidos de uma <a href="https://github.com/devarthurribeiro/covid19-brazil-api.git" target="_blank">API</a> desenvolvida por <a href="https://github.com/devarthurribeiro" target="_blank">Arthur Ribeiro</a> e outros contribuidores. <a href="https://github.com/devarthurribeiro/covid19-brazil-api" target="_blank"><span class="badge badge-light">Ver projeto</span></a>
+            <br><br>
+            Esta API, por sua vez, recebe dados dos seguintes locais: 
+            <ul>
+                <li>
+                    <a href="https://github.com/CSSEGISandData/COVID-19" target="_blank">CSSEGISandData</a>
+                </li>
+                <li>
+                    <a href="http://saude.gov.br/" target="_blank">Ministério da Saúde</a>
+                </li>
+                <li>
+                    <a href="https://covid.saude.gov.br/" target="_blank">Coronavírus Brasil</a> <small>(Site do Governo Federal)</small>
+                </li>
+            </ul>
+            
+        </p>
+        
+        <p>
+            <a class="btn btn-lg btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="true" aria-controls="collapseExample">
+                Leia mais
+            </a>
+        </p>
+        <div class="collapse" id="collapseExample">
+            <div class="card card-body text-dark bg-light">
+                Em breve haverá mais conteúdo nesta seção. 
+            </div>
+        </div>
+
+
+    </div>
+
+    <blockquote class="blockquote text-center">
+        
+        <p class="mb-0">
+            Developed by <a href="https://github.com/felipewesley" id="profile" target="_blank" title="Ver Felipe Wesley no GitHub">Felipe Wesley</a> • 2020
+        </p>
+        <br>
+        <a class="btn btn-dark btn-lg" href="#">
+            <i class="fa fa-github"></i> Ver projeto no GitHub
+        </a>
+
+    </blockquote>
+
+    <!-- Bootstrap JS and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+</body>
+</html>
