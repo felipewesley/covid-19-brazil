@@ -28,11 +28,11 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#"> Home <span class="sr-only">(Página atual)</span></a>
-                </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="./about.html"> Sobre </a>
+                    <a class="nav-link" href="./index.html"> Home </a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="#"> Sobre <span class="sr-only">(Página atual)</span></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="./covid19graph.html" id="link_contamincacao"> Gráfico de contaminação </a>
@@ -49,35 +49,56 @@
 
     <div class="container container-main">
         
-        <h1 class="display-4"> COVID-19 no Brasil </h1> <br>
-        
-        <div class="alert alert-dark text-center" role="alert">
-            Leia a seção <strong><a id="link_about_alert" href="./about.html">sobre</a></strong> antes de continuar a utilizar esta aplicação.
+        <h1 class="display-4"> Sobre esta aplicação </h1>
+        <br>
+        <ul class="lead">
+            <li>
+                Os dados apresentados através dos gráficos são atualizados diariamente de acordo com a disponibilidade dos serviços que fornecem os dados referentes à contaminação por Covid-19. <br>
+            </li>
+            <li>
+                Os gráficos são interativos. Para visualizar melhor as estatísticas, clique/toque sobre os elementos do gráfico para os dados sejam exibidos. <br>
+            </li>
+            <li>
+                Se estiver utilizando dispositivo móvel, utilize a orientação de paisagem (horizontal) para visualizar e interagir melhor com os gráficos. 
+            </li>
+            <li>
+                Para maiores informações, <a href="mailto:fe.wesleybasso@gmail.com?subject=Informacoes%20sobre%20o%20App%20Covid-19"> envie um e-mail </a>. <br>
+            </li>
+            <li>
+                Desenvolvido por Felipe Wesley 
+                <a data-toggle="modal" data-target="#modalExemplo">
+                    <i class="fa fa-check-circle verified-2"></i>
+                </a>.
+            </li>
+        </ul>
+
+        <!-- Modal -->
+        <div class="modal fade" id="modalExemplo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Felipe Wesley</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <img class="rounded-circle" id="img-profile" src="./img/profile.jpeg">
+                        <div class="text-content">
+                            <h3 class="display-5">Felipe Wesley</h3>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a class="btn btn-dark" href="https://github.com/felipewesley/covid-19-brazil" target="_blank">
+                            <i class="fa fa-github"></i> Ver projeto no GitHub
+                        </a>
+                        <button type="button" class="btn btn-dark" data-dismiss="modal">Concluído</button>
+                    </div>
+                </div>
+            </div>
         </div>
         
-        <p class="lead">
-            Esta aplicação apresenta dados e gráficos baseados em dados fornecidos por terceiros sobre a taxa de contaminação por Coronavírus em cada região do Brasil, com seus respectivos estados. <br><br>
-            Cada estado apresenta a quantidade de casos confirmados, quantidade de mortes por COVID-19 e quantidade de recuperados. 
-        </p>
         <hr class="my-4 rule-4">
-        <h3 class="display-5"> De onde vêm os dados? <i class="fa fa-check-circle verified"></i> </h3> 
-        <p class="lead">
-            Os dados utilizados nesta aplicação são recebidos de uma <a href="https://github.com/devarthurribeiro/covid19-brazil-api.git" target="_blank">API</a> desenvolvida por <a href="https://github.com/devarthurribeiro" target="_blank">Arthur Ribeiro</a> e outros contribuidores. <a href="https://github.com/devarthurribeiro/covid19-brazil-api" target="_blank"><span class="badge badge-light">Ver projeto</span></a>
-            <br><br>
-            Esta API, por sua vez, recebe dados dos seguintes locais: 
-            <ul>
-                <li>
-                    <a href="https://github.com/CSSEGISandData/COVID-19" target="_blank">CSSEGISandData</a>
-                </li>
-                <li>
-                    <a href="http://saude.gov.br/" target="_blank">Ministério da Saúde</a>
-                </li>
-                <li>
-                    <a href="https://covid.saude.gov.br/" target="_blank">Coronavírus Brasil</a> <small>(Site do Governo Federal)</small>
-                </li>
-            </ul>
-            
-        </p>
         
         <p>
             <a class="btn btn-lg btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="true" aria-controls="collapseExample">
@@ -89,8 +110,7 @@
                 Em breve haverá mais conteúdo nesta seção. 
             </div>
         </div>
-
-
+    
     </div>
     
     <blockquote class="blockquote text-center">

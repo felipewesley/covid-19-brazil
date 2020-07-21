@@ -29,6 +29,16 @@ i.verified {
     color: #6cc9ff;
 }
 
+i.verified-2 {
+    display: inline;
+    font-size: 1em;
+    color: #6cc9ff;
+}
+
+i.verified-2:hover {
+    cursor: pointer;
+}
+
 button#graphMode {
     display: flex;
     position: relative;
@@ -40,4 +50,27 @@ a#profile {
     font-weight: bold;
     font-size: 1em;
     color: #FFF; 
+}
+
+div#modalExemplo {
+    color: #000; 
+}
+
+div.rounded-circle {
+    background: #30303d;
+}
+
+img#img-profile {
+    width: 150px;
+    height: 150px;
+}
+
+div.text-content {
+    display: inline-flex;
+    margin-left: 5px;
+}
+
+a#link_about_alert {
+    text-decoration: none;
+    color: #000; 
 }
