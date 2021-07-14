@@ -29,7 +29,7 @@ const states = {
     RioGrandeDoSul: 43,
 
     // Sudeste
-    SaoPaulo: 20,
+    SaoPaulo: 35,
     RioDeJaneiro: 33,
     MinasGerais: 31,
     EspiritoSanto: 32,
