@@ -1,55 +1,109 @@
 /** Request to API COVID-19 for Brazilian States */
 
-const obj = fetch("https://covid19-brazil-api.now.sh/api/report/v1", {
-    "method": "GET"
-})
-.then(response => response.json())
-.catch(err => err);
+const dataSourceUrl = "https://covid19-brazil-api.now.sh/api/report/v1";
+
+const states = {
+    // Norte
+    Para: 15,
+    Amazonas: 13,
+    Amapa: 16,
+    Rondonia: 11,
+    Roraima: 14,
+    Tocantins: 17,
+    Acre: 12,
+
+    // Nordeste
+    Ceara: 23,
+    Bahia: 29,
+    Maranhao: 21,
+    Pernambuco: 26,
+    Paraiba: 25,
+    Alagoas: 27,
+    RioGrandeDoNorte: 24,
+    Sergipe: 28,
+    Piaui: 22,
+
+    // Sul
+    Parana: 41,
+    SantaCatarina: 42,
+    RioGrandeDoSul: 43,
+
+    // Sudeste
+    SaoPaulo: 20,
+    RioDeJaneiro: 33,
+    MinasGerais: 31,
+    EspiritoSanto: 32,
+
+    // Centro-Oeste
+    Goias: 52,
+    MatoGrosso: 51,
+    MatoGrossoDoSul: 50,
+
+    // Distrito Federal
+    DistritoFederal: 53
+    
+};
+
+const obj = fetch(dataSourceUrl, {"method": "GET"})
+    .then(response => response.json())
+    .catch(err => console.error(err));
 
 Promise.resolve(obj).then(response => {
-    // A Promise resolvida está disponível aqui
-
-    // console.log(response.data)
     
-    let e = Array(response.data); 
-
-    for(let i in e){
-        e[0][i].deaths = Number(e[0][i].deaths); 
-    }
+    const data = Array(response.data)[0];
 
     let norte = []; 
-        norte.push(e[0][3]); // Pará
-        norte.push(e[0][7]); // Amazonas
-        norte.push(e[0][21]); // Amapá
-        norte.push(e[0][22]); // Rondônia
-        norte.push(e[0][23]); // Roraima
-        norte.push(e[0][24]); // Tocantins
-        norte.push(e[0][25]); // Acre
     let nordeste = []; 
-        nordeste.push(e[0][1]); // Ceará
-        nordeste.push(e[0][4]); // Bahia
-        nordeste.push(e[0][5]); // Maranhão
-        nordeste.push(e[0][9]); // Pernanbuco
-        nordeste.push(e[0][11]); // Paraíba
-        nordeste.push(e[0][14]); // Alagoas
-        nordeste.push(e[0][17]); // Rio Grande do Norte
-        nordeste.push(e[0][16]); // Sergipe
-        nordeste.push(e[0][19]); // Piauí
     let sul = []; 
-        sul.push(e[0][12]); // Paraná
-        sul.push(e[0][13]); // Santa Catarina
-        sul.push(e[0][15]); // Rio Grande do Sul
     let sudeste = []; 
-        sudeste.push(e[0][0]); // São Paulo
-        sudeste.push(e[0][2]); // Rio de Janeiro
-        sudeste.push(e[0][6]); // Minas Gerais
-        sudeste.push(e[0][10]); // Espírito Santo
     let centro_oeste = []; 
-        centro_oeste.push(e[0][18]); // Goiás
-        centro_oeste.push(e[0][20]); // Mato Grosso
-        centro_oeste.push(e[0][26]); // Mato Grosso do Sul
     let dist_federal = []; 
-        dist_federal.push(e[0][8]) // Distrito Federal
+
+    data.forEach(element => {
+
+        switch (element.uid) {
+
+            case states.Para:
+            case states.Amazonas:
+            case states.Amapa:
+            case states.Rondonia:
+            case states.Roraima:
+            case states.Tocantins:
+            case states.Acre:
+                norte.push(element);
+                break;
+            case states.Ceara:
+            case states.Bahia:
+            case states.Maranhao:
+            case states.Pernambuco:
+            case states.Paraiba:
+            case states.Alagoas:
+            case states.RioGrandeDoNorte:
+            case states.Sergipe:
+            case states.Piaui:
+                nordeste.push(element);
+                break;
+            case states.Parana:
+            case states.SantaCatarina:
+            case states.RioGrandeDoSul:
+                sul.push(element);
+                break;
+            case states.SaoPaulo:
+            case states.RioDeJaneiro:
+            case states.MinasGerais:
+            case states.EspiritoSanto:
+                sudeste.push(element);
+                break;
+            case states.Goias:
+            case states.MatoGrosso:
+            case states.MatoGrossoDoSul:
+                centro_oeste.push(element);
+                break;
+            case states.DistritoFederal:
+                dist_federal.push(element);
+                break;
+        }
+    });
 
     am4core.ready(function() {
 
