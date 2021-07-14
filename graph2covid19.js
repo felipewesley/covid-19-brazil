@@ -1,23 +1,202 @@
 /** Request to API COVID-19 for Brazilian States */
 
-const obj = fetch("https://covid19-brazil-api.now.sh/api/report/v1", {
-    "method": "GET"
-})
-.then(response => response.json())
-.catch(err => err);
+const dataSourceUrl = "https://covid19-brazil-api.now.sh/api/report/v1";
+
+const states = {
+  // Norte
+  Para: 15,
+  Amazonas: 13,
+  Amapa: 16,
+  Rondonia: 11,
+  Roraima: 14,
+  Tocantins: 17,
+  Acre: 12,
+
+  // Nordeste
+  Ceara: 23,
+  Bahia: 29,
+  Maranhao: 21,
+  Pernambuco: 26,
+  Paraiba: 25,
+  Alagoas: 27,
+  RioGrandeDoNorte: 24,
+  Sergipe: 28,
+  Piaui: 22,
+
+  // Sul
+  Parana: 41,
+  SantaCatarina: 42,
+  RioGrandeDoSul: 43,
+
+  // Sudeste
+  SaoPaulo: 35,
+  RioDeJaneiro: 33,
+  MinasGerais: 31,
+  EspiritoSanto: 32,
+
+  // Centro-Oeste
+  Goias: 52,
+  MatoGrosso: 51,
+  MatoGrossoDoSul: 50,
+
+  // Distrito Federal
+  DistritoFederal: 53
+};
+
+const norte = {
+  acre: 0,
+  amazonas: 0,
+  amapa: 0,
+  para: 0,
+  rondonia: 0,
+  roraima: 0,
+  tocantins: 0
+};
+    
+const nordeste = {
+  ceara: 0,
+  bahia: 0,
+  maranhao: 0,
+  pernambuco: 0,
+  paraiba: 0,
+  alagoas: 0, 
+  riograndenorte: 0,
+  sergipe: 0,
+  piaui: 0
+};
+
+const sul = {
+  parana: 0,
+  santacatarina: 0,
+  riograndesul: 0
+};
+
+const sudeste = {
+  saopaulo: 0,
+  riodejaneiro: 0,
+  minasgerais: 0,
+  espiritosanto: 0
+};
+
+const centro_oeste = {
+  goias: 0,
+  matogrosso: 0,
+  matogrossosul: 0
+};
+
+const dist_federal = {
+  distfed: 0
+};
+
+const obj = fetch(dataSourceUrl, {"method": "GET"})
+  .then(response => response.json())
+  .catch(err => console.error(err));
 
 Promise.resolve(obj).then(response => {
-    // A Promise resolvida está disponível aqui
+
+    const data = Array(response.data)[0];
+    console.log(data)
+    data.forEach(element => {
+
+      const deaths = element.deaths;
+
+      switch (element.uid) {
+
+          // Regiao Norte
+          case states.Para:
+            norte.para = deaths;
+            break;
+          case states.Amazonas:
+            norte.amazonas = deaths;
+            break;
+          case states.Amapa:
+            norte.amapa = deaths;
+            break;
+          case states.Rondonia:
+            norte.rondonia = deaths;
+            break;
+          case states.Roraima:
+            norte.roraima = deaths;
+            break;
+          case states.Tocantins:
+            norte.tocantins = deaths;
+            break;
+          case states.Acre:
+            norte.acre = deaths;
+            break;
+
+          // Regiao Nordeste
+          case states.Ceara:
+            nordeste.ceara = deaths;
+            break;
+          case states.Bahia:
+            nordeste.bahia = deaths;
+            break;
+          case states.Maranhao:
+            nordeste.maranhao = deaths;
+            break;
+          case states.Pernambuco:
+            nordeste.pernambuco = deaths;
+            break;
+          case states.Paraiba:
+            nordeste.paraiba = deaths;
+            break;
+          case states.Alagoas:
+            nordeste.alagoas = deaths;
+            break;
+          case states.RioGrandeDoNorte:
+            nordeste.riograndenorte = deaths;
+            break;
+          case states.Sergipe:
+            nordeste.sergipe = deaths;
+            break;
+          case states.Piaui:
+            nordeste.piaui = deaths;
+            break;
+              
+          // Regiao Sul
+          case states.Parana:
+            sul.parana = deaths;
+            break;
+          case states.SantaCatarina:
+            sul.santacatarina = deaths;
+            break;
+          case states.RioGrandeDoSul:
+            sul.riograndesul = deaths;
+            break;
+
+          // Regiao Sudeste
+          case states.SaoPaulo:
+            sudeste.saopaulo = deaths;
+            break;
+          case states.RioDeJaneiro:
+            sudeste.riodejaneiro = deaths;
+            break;
+          case states.MinasGerais:
+            sudeste.minasgerais = deaths;
+            break;
+          case states.EspiritoSanto:
+            sudeste.espiritosanto = deaths;
+            break;
+          
+          // Regiao Centro-Oeste
+          case states.Goias:
+            centro_oeste.goias = deaths;
+            break;
+          case states.MatoGrosso:
+            centro_oeste.matogrosso = deaths;
+            break;
+          case states.MatoGrossoDoSul:
+            centro_oeste.matogrossosul = deaths;
+            break;
+          
+          // Distrito Federal
+          case states.DistritoFederal:
+              dist_federal.distfed = deaths;
+              break;
+      }
+    });
     
-    // console.log(response)
-
-    let e = Array(response.data); 
-
-    for(let i in e){
-        e[0][i].deaths = Number(e[0][i].deaths); 
-    }
-    console.log(e[0][0].deaths)
-
     am4core.ready(function() {
 
         // Themes begin
@@ -27,82 +206,16 @@ Promise.resolve(obj).then(response => {
         
         // Create chart instance
         var chart = am4core.create("chartdiv", am4charts.XYChart);
-        
-        let norte = []; 
-            norte.push(e[0][3]); // Pará
-            norte.push(e[0][7]); // Amazonas
-            norte.push(e[0][21]); // Amapá
-            norte.push(e[0][22]); // Rondônia
-            norte.push(e[0][23]); // Roraima
-            norte.push(e[0][24]); // Tocantins
-            norte.push(e[0][25]); // Acre
-        let nordeste = []; 
-            nordeste.push(e[0][1]); // Ceará
-            nordeste.push(e[0][4]); // Bahia
-            nordeste.push(e[0][5]); // Maranhão
-            nordeste.push(e[0][9]); // Pernanbuco
-            nordeste.push(e[0][11]); // Paraíba
-            nordeste.push(e[0][14]); // Alagoas
-            nordeste.push(e[0][17]); // Rio Grande do Norte
-            nordeste.push(e[0][16]); // Sergipe
-            nordeste.push(e[0][19]); // Piauí
-        let sul = []; 
-            sul.push(e[0][12]); // Paraná
-            sul.push(e[0][13]); // Santa Catarina
-            sul.push(e[0][15]); // Rio Grande do Sul
-        let sudeste = []; 
-            sudeste.push(e[0][0]); // São Paulo
-            sudeste.push(e[0][2]); // Rio de Janeiro
-            sudeste.push(e[0][6]); // Minas Gerais
-            sudeste.push(e[0][10]); // Espírito Santo
-        let centro_oeste = []; 
-            centro_oeste.push(e[0][18]); // Goiás
-            centro_oeste.push(e[0][20]); // Mato Grosso
-            centro_oeste.push(e[0][26]); // Mato Grosso do Sul
-        let dist_federal = []; 
-            dist_federal.push(e[0][8]) // Distrito Federal
 
         // Add data
-        chart.data = [ {
-            "zone": "Norte",
-            "acre": e[0][25].deaths,
-            "amazonas": e[0][7].deaths,
-            "amapa": e[0][21].deaths,
-            "para": e[0][3].deaths,
-            "rondonia": e[0][22].deaths,
-            "roraima": e[0][23].deaths,
-            "tocantins": e[0][24].deaths
-          }, {
-            "zone": "Nordeste",
-            "ceara": e[0][1].deaths,
-            "bahia": e[0][4].deaths,
-            "maranhao": e[0][5].deaths,
-            "pernambuco": e[0][9].deaths,
-            "paraiba": e[0][11].deaths,
-            "alagoas": e[0][14].deaths, 
-            "riograndenorte": e[0][17].deaths,
-            "sergipe": e[0][16].deaths,
-            "piaui": e[0][19].deaths
-          }, {
-            "zone": "Sul",
-            "parana": e[0][12].deaths,
-            "santacatarina": e[0][13].deaths,
-            "riograndesul": e[0][15].deaths
-          }, {
-            "zone": "Sudeste",
-            "saopaulo": e[0][0].deaths,
-            "riodejaneiro": e[0][2].deaths,
-            "minasgerais": e[0][6].deaths,
-            "espiritosanto": e[0][10].deaths
-          }, {
-            "zone": "Centro-Oeste",
-            "goias": e[0][18].deaths,
-            "matogrosso": e[0][20].deaths,
-            "matogrossosul": e[0][26].deaths
-          }, {
-            "zone": "Distrito Federal",
-            "distfed": e[0][8].deaths
-          } ];
+        chart.data = [
+          {...norte, zone: "Norte"}, 
+          {...nordeste, zone: "Nordeste"},
+          {...sul, zone: "Sul"},
+          {...sudeste, zone: "Sudeste"},
+          {...centro_oeste, zone: "Centro-Oeste"},
+          {...dist_federal, zone: "Distrito Federal"}
+        ];
 
         /*
         // Add data
